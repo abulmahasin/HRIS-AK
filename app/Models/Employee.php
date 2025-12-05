@@ -22,6 +22,7 @@ class Employee extends Model
         'employee_status_id',
         'grade_id',
         'marital_status_id',
+        'photo',
     ];
 
     public function organization()

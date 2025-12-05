@@ -10,9 +10,25 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
 
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Tailwind CSS dari CDN (sementara) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('css/custom-datatable.css') }}">
+    
     @livewireStyles
     
     <style>
@@ -195,7 +211,54 @@
             border-radius: 0.75rem;
             color: white;
         }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
     </style>
+    
+    <!-- Konfigurasi Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Figtree', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body class="font-sans antialiased">
     <!-- Sidebar Overlay (Mobile) -->
@@ -293,7 +356,11 @@
         </main>
     </div>
 
+    <!-- Livewire Scripts -->
     @livewireScripts
+    
+    <!-- Custom JavaScript -->
+    <script src="{{ asset('js/custom-datatable.js') }}"></script>
     
     <script>
         // Toggle sidebar function
@@ -367,7 +434,11 @@
 
             // Initial icon update
             updateHamburgerIcon();
+            
+            // Initialize DataTables jika ada
+            initializeDataTables();
         });
     </script>
+
 </body>
 </html>

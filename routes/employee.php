@@ -16,7 +16,8 @@ Route::middleware(['auth', 'verified'])->prefix('employees')->name('employees.')
     Route::delete('/{employee}', [EmployeeController::class, 'destroy'])->name('destroy');
     
     // Additional Employee Routes
-    Route::get('/export/excel', [EmployeeController::class, 'exportExcel'])->name('export.excel');
+    Route::get('/export/excel', [EmployeeController::class, 'export'])->name('export.excel');
+    
     Route::get('/export/pdf', [EmployeeController::class, 'exportPdf'])->name('export.pdf');
     Route::post('/import', [EmployeeController::class, 'import'])->name('import');
     Route::get('/template/download', [EmployeeController::class, 'downloadTemplate'])->name('template.download');
